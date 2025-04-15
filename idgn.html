@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ID Card Generationn - Abu-Abdurrahman CodeVerge Technology Ltd</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Optional: Google Font for modern typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Form Container -->
+  <div class="form-container">
+    <h1>ID Card Generatratio</h1>
+    <p>Note: Only for registered Student!</p>
+    <form id="idForm">
+      <label for="studentName">Full Name:</label>
+      <input type="text" id="studentName" name="studentName" placeholder="Enter your full name" required>
+      
+      <label for="photoInput">Upload Photo:</label>
+      <input type="file" id="photoInput" accept="image/*" required>
+      
+      <label for="signatureInput">Upload Signature:</label>
+      <input type="file" id="signatureInput" accept="image/*" required>
+      
+      <button type="submit">Generate ID Card</button>
+    </form>
+  </div>
+  
+  <!-- ID Card Preview Container -->
+  <div id="idCard" class="id-card" style="display: none;">
+    <!-- Front Side -->
+    <div class="card-front">
+      <header class="card-header">
+        <img src="images/IMG-20250415-WA0010__1_-removebg-preview.png" alt="Company Logo" class="company-logo">
+        <h2>Abu-Abdurrahman CodeVerge Technology Ltd</h2>
+        <h3>Website Design Training</h3>
+      </header>
+      <div class="card-body">
+        <div class="photo-wrapper">
+          <img class="student-photo" src="" alt="Student Photo">
+        </div>
+        <div class="signature-wrapper">
+          <p class="signature-text">Signature:</p>
+          <img class="student-signature" src="" alt="Student Signature">
+        </div>
+        <div class="qr-code">
+          <img src="images/IMG-20250415-WA0010 (1).jpg" alt="QR Code">
+        </div>
+        <!-- Student name now at the bottom -->
+        <p class="student-name"></p>
+      </div>
+    </div>
+    
+    <!-- Back Side -->
+    <div class="card-back">
+      <div class="back-content">
+        <p>This ID card confirms that the above individual is enrolled in the Website Design Training program offered by Abu-Abdurrahman CodeVerge Technology Ltd.</p>
+        <p><strong>Date & Time Generated:</strong> <span id="generatedDateTime"></span></p>
+        <p>Please submit this card for documentation.</p>
+        <div class="ceo-signature-section">
+          <img src="images/CamScanner_04-15-2025_17.38-removebg-preview.png" alt="CEO Signature" class="ceo-signature">
+          <p><strong>CEO Signature</strong></p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Print/Download Actions -->
+    <div class="card-actions">
+      <button onclick="window.print()">Print/Download ID Card</button>
+    </div>
+  </div>
+<style>/* Global Reset and Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #eef4f9;
+      color: #333;
+      padding: 20px;
+    }
+    
+    /* Form Container */
+    .form-container {
+      background: #fff;
+      max-width: 500px;
+      margin: 0 auto 30px;
+      padding: 25px 30px;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .form-container h1 {
+      color: #0078d4;
+      margin-bottom: 15px;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    form label {
+      text-align: left;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    
+    form input[type="text"],
+    form input[type="file"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    form button {
+      margin-top: 20px;
+      padding: 12px;
+      border: none;
+      background-color: #0078d4;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    form button:hover {
+      background-color: #005aa7;
+    }
+    
+    /* ID Card Container with Fixed Dimensions */
+    .id-card {
+      max-width: 400px;
+      width: 400px;
+      height: 550px;
+      margin: 0 auto 30px;
+      perspective: 1000px;
+    }
+    
+    /* Common Styles for Front and Back of the ID Card */
+    .id-card > div {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      margin-bottom: 20px;
+    }
+    
+    /* Front Side */
+    .card-front {
+      text-align: center;
+      position: relative;
+    }
+    
+    .card-header {
+      border-bottom: 1px solid #dce4f0;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .company-logo {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+    
+    .card-header h2 {
+      font-size: 1.3rem;
+      color: #0078d4;
+      margin-bottom: 5px;
+    }
+    
+    .card-header h3 {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    
+    .card-body .student-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 15px;
+      color: #333;
+    }
+    
+    .photo-wrapper, .signature-wrapper {
+      margin: 10px 0;
+    }
+    
+    .photo-wrapper img,
+    .signature-wrapper img {
+      border: 2px solid #0078d4;
+      border-radius: 5px;
+      max-width: 110px;
+      max-height: 110px;
+      object-fit: cover;
+    }
+    
+    .signature-wrapper .signature-text {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .qr-code {
+      margin-top: 15px;
+      text-align: center;
+    }
+    
+    .qr-code img {
+      width: 120px;
+      height: 120px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+    }
+    
+    /* Back Side */
+    .card-back {
+      text-align: center;
+      background: #f9f9f9;
+    }
+    
+    .back-content {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      padding: 15px;
+    }
+    
+    /* CEO Signature Section on the Back */
+    .ceo-signature-section {
+      margin-top: 15px;
+    }
+    
+    .ceo-signature-section img {
+      max-width: 150px;
+      margin-bottom: 5px;
+    }
+    
+    .ceo-signature-section p {
+      font-weight: bold;
+    }
+    
+    /* Card Actions */
+    .card-actions {
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    .card-actions button {
+      padding: 10px 15px;
+      margin: 5px;
+      background-color: #0078d4;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .card-actions button:hover {
+      background-color: #005aa7;
+    }
+    
+    /* Print Styles */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      .id-card, .id-card * {
+        visibility: visible;
+      }
+      .id-card {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+    </style>
+    <script>// Candidate list - only these students can generate an ID card
+        const candidates = [
+          { name: "Aliyu Bashir Lawan", photo: "Aliyu Bashir Lawan.png", status: "Accepted" },
+          { name: "Abdulmalik Abdulfatah", photo: "photo2.jpg", status: "Accepted" },
+          { name: "Alice Brown", photo: "photo3.jpg", status: "Accepted" }
+        ];
+        
+        // Listen for form submission to generate ID card
+        document.getElementById("idForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+          generateIDCard();
+        });
+        
+        function generateIDCard() {
+          const studentNameInput = document.getElementById("studentName").value.trim();
+          if (!studentNameInput) {
+            alert("Please enter your name.");
+            return;
+          }
+          
+          // Validate candidate list (case-insensitive)
+          const candidate = candidates.find(c => c.name.toLowerCase() === studentNameInput.toLowerCase());
+          if (!candidate) {
+            alert("You are not authorized to generate an ID card. Your name is not on our candidate list.");
+            return;
+          }
+          
+          // Update the student name on the card (now displayed at the bottom on the front)
+          document.querySelector(".student-name").innerText = candidate.name;
+          
+          // Set current date & time on the back side
+          document.getElementById("generatedDateTime").innerText = new Date().toLocaleString();
+          
+          // Generate dynamic QR code: embed student's name along with a message
+          const qrData = encodeURIComponent(candidate.name + " - Admission for Website Design Training");
+          const qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?data=" + qrData + "&size=120x120";
+          document.querySelector(".qr-code img").src = qrCodeUrl;
+          
+          // Process photo and signature file inputs
+          const photoFile = document.getElementById("photoInput").files[0];
+          const signatureFile = document.getElementById("signatureInput").files[0];
+          if (!photoFile || !signatureFile) {
+            alert("Please upload both your photo and signature.");
+            return;
+          }
+          
+          // Helper function to display image from file input
+          function loadImage(file, selector) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+              document.querySelector(selector).src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+          
+          loadImage(photoFile, ".student-photo");
+          loadImage(signatureFile, ".student-signature");
+          
+          // Show the ID card container
+          document.getElementById("idCard").style.display = "block";
+        }
+        
+        // Print/Download functionality using window.print()
+        document.getElementById("downloadBtn").addEventListener("click", function () {
+          window.print();
+        });
+        </script>
+  <script src="script.js"></script>
+</body>
+</html>

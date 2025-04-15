@@ -3,332 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Candidate Admission Letters</title>
+  <title>Website Design Training |Notification Website</title>
   <style>
-    /* Basic reset */
+    /* Basic reset for margin and padding */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
+    /* Style for the container holding both sections */
     body {
       font-family: Arial, sans-serif;
       background: #f4f4f4;
       padding: 20px;
     }
-    
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    
-    /* Candidate card styling */
-    .candidate-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      padding: 15px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .candidate-photo {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-    
-    .candidate-details {
-      flex: 1;
-    }
-    
-    .candidate-details h2 {
-      margin-bottom: 5px;
-      font-size: 1.5em;
-    }
-    
-    .candidate-details p {
-      margin-bottom: 10px;
-    }
-    
-    .candidate-details p strong {
-      font-weight: bold;
-    }
-    
-    button {
-      padding: 10px 15px;
-      font-size: 1em;
+
+    /* Short notice container at the top */
+    #shortNotice {
+      background-color: #333;
       color: #fff;
-      background-color: #007BFF;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      overflow: hidden;
+      position: relative;
+      height: 40px;
+      line-height: 40px;
+      margin-bottom: 20px;
     }
     
-    button:hover {
-      background-color: #0056b3;
+    /* The moving text inside the short notice */
+    #shortNotice span {
+      position: absolute;
+      white-space: nowrap;
+      /* Start off from the left */
+      left: 0;
+      animation: moveText 5s linear infinite alternate;
+    }
+    
+    /* Keyframes for a back-and-forth animation */
+    @keyframes moveText {
+      from {
+        left: 0;
+      }
+      to {
+        left: calc(20% - 150px); /* Adjust 200px according to text width */
+      }
+    }
+
+    /* Long note container below the notice */
+    #longNote {
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    /* Styling for links inside the long note */
+    #longNote a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    
+    #longNote a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Candidate Admission Letters</h1>
-    <div id="candidateList">
-      <!-- Candidate cards will be rendered here by JavaScript -->
-    </div>
+
+  <!-- Short notice at the top with a moving animation -->
+  <div id="shortNotice">
+    <span>We are excited to announce that the admission list for our program is now released,
+       powered by Abu-Abdurrahman CodeVerge Technology. Click on this Link Below to View Congratulations to successful applicants.
+        Kindly check your admission status online and follow further instructions. 
+        Thank you for your patience, and we look forward to welcoming you on
+         this exciting journey!</span>
   </div>
   
+  <!-- Long note with additional information and links -->
+  <div id="longNote">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Website Design Training Notification</title>
+      <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f5f5f5;
+          color: #333;
+          padding: 40px;
+        }
+        .container {
+          background: white;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 0 20px rgba(0,0,0,0.1);
+          max-width: 900px;
+          margin: auto;
+        }
+        h1, h2 {
+          color: #0a76d6;
+        }
+        .register-btn {
+          display: inline-block;
+          padding: 12px 25px;
+          background-color: #0a76d6;
+          color: white;
+          text-decoration: none;
+          border-radius: 8px;
+          font-weight: bold;
+          margin-top: 20px;
+        }
+        ul {
+          margin-left: 20px;
+        }
+        footer {
+          margin-top: 40px;
+          font-size: 0.9em;
+          color: #777;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>🚀 Website Design Training Using Strikingly</h1>
+        <h2>Powered by Abu-Abdurrahman CodeVerge Technology</h2>
+    
+        <p>We’re excited to invite you to our intensive and practical <strong>Website Design Training Using Strikingly</strong> — a unique program aimed at empowering aspiring designers, entrepreneurs, students, and tech enthusiasts to build professional websites using the powerful Strikingly platform.</p>
+    
+        <h2>🌟 What You’ll Learn:</h2>
+        <ul>
+          <li>Introduction to Website Design & Digital Presence</li>
+          <li>Creating websites with Strikingly – step by step</li>
+          <li>Homepage, Gallery, Contact, and About Page designs</li>
+          <li>Using multimedia: images, videos, icons, animations</li>
+          <li>Domain connection and site publishing</li>
+          <li>Website layout & navigation best practices</li>
+          <li>Live demonstration and practice sessions</li>
+        </ul>
+    
+        <h2>👨‍🏫 Who Should Attend?</h2>
+        <p>This training is designed for:</p>
+        <ul>
+          <li>Beginners in web design</li>
+          <li>Business owners wanting an online presence</li>
+          <li>Students & graduates seeking digital skills</li>
+          <li>Freelancers looking to expand their skills</li>
+        </ul>
+    
+        <h2>📅 Program Details:</h2>
+        <ul>
+          <li><strong>Duration:</strong> 12 weeks</li>
+          <li><strong>Mode:</strong> Online</li>
+          <li><strong>Start Date:</strong> 27th April, 2025</li>
+          <li><strong>Certificate:</strong> Yes, upon completion</li>
+        </ul>
+    
+        <h2>🔗 Register Now!</h2>
+        <p>Secure your spot today by registering through the link below:</p>
+        <a href="https://form.jotform.com/250213703016542" class="register-btn" target="_blank">Click Here to Register</a>
+        <a href="candidTE.HTML" class="register-btn" target="_blank">Admission List</a>
+        <a href="idgn.html" class="register-btn" target="_blank">Generate ID Card</a>
+        <h2>  Contact & Support</h2>
+        <p>
+          <strong>Phone/WhatsApp:</strong> +2348107907647|+2349075977744<br>
+          <strong>Email:</strong> a2ctltd@gmail.com<br>
+          <strong>Follow us:</strong>
+          <a href="https://web.facebook.com/aliyu.dambazau.7/">Facebook</a> |
+          <a href="https://www.instagram.com/aliyu_dambazau/">Instagram</a> |
+          <a href="https://www.instagram.com/aliyu_dambazau/">Twitter</a>
+        </p>
+    
+        <footer>
+          &copy; 2025 Abu-Abdurrahman CodeVerge Technology. All rights reserved.
+        </footer>
+      </div>
+    </body>
+    </html>
+  <!-- JavaScript for potential enhancements -->
   <script>
-    // Edit candidate details here
-    const candidates = [
-      {
-        name: "Aliyu Bashir Lawan",
-        photo: "Aliyu Bashir Lawan.png", // Replace with the correct image path or URL
-        status: "Accepted"   // Change to "Rejected" if needed
-      },
-      {
-        name: "Jane Smith",
-        photo: "photo2.jpg",
-        status: "Rejected"
-      },
-      {
-        name: "Alice Brown",
-        photo: "photo3.jpg",
-        status: "Accepted"
-      }
-      // Add more candidates as needed
-    ];
-
-    // Render candidate cards on the page
-    function renderCandidates() {
-      const container = document.getElementById('candidateList');
-      candidates.forEach((candidate, index) => {
-        const card = document.createElement('div');
-        card.className = "candidate-card";
-        card.innerHTML = `
-          <img src="${candidate.photo}" alt="${candidate.name}" class="candidate-photo">
-          <div class="candidate-details">
-            <h2>${candidate.name}</h2>
-            <p>Status: <strong>${candidate.status}</strong></p>
-            <button onclick="printLetter(${index})">Print Letter</button>
-          </div>
-        `;
-        container.appendChild(card);
+    // Example: Log a message when a link is clicked.
+    document.querySelectorAll('#longNote a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        console.log('A link was clicked: ' + this.href);
       });
-    }
-
-    // Print a letter for the candidate with their details and current date/time
-    function printLetter(index) {
-      const candidate = candidates[index];
-      const currentDateTime = new Date().toLocaleString();
-      
-      // Create a new window for print preview
-      const printWindow = window.open('', '', 'width=600,height=600');
-      printWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <title>Admission Letter - ${candidate.name}</title>
-            <style>
-              body {
-                font-family: Arial, sans-serif;
-                padding: 20px;
-                background: #fff;
-              }
-              .letter {
-                border: 1px solid #ccc;
-                padding: 20px;
-                border-radius: 6px;
-                max-width: 500px;
-                margin: 0 auto;
-              }
-              .letter h1 {
-                text-align: center;
-                margin-bottom: 20px;
-              }
-              .letter img {
-                display: block;
-                max-width: 150px;
-                margin: 0 auto 20px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-              }
-              .letter p {
-                margin-bottom: 10px;
-              }
-              .footer {
-                text-align: center;
-                margin-top: 20px;
-                font-size: 12px;
-                color: #555;
-              }
-                .h2 {
-                font-size: 0.1em; 
-                }
-                .h3 {
-                font-size: 5px
-                }
-                /* Reset some basic styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  line-height: 1.6;
-  padding: 20px;
-}
-
-/* Header styling */
-.announcement-header {
-  text-align: center;
-  background-color: #0044cc;
-  color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-
-.announcement-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.announcement-header h2 {
-  font-size: 2rem;
-  margin-bottom: 5px;
-}
-
-.announcement-header p {
-  font-size: 1.1rem;
-}
-
-/* Main content styling */
-.announcement-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.announcement-content p {
-  margin-bottom: 15px;
-  text-align: justify;
-}
-
-.announcement-content h3 {
-  margin-top: 20px;
-  font-size: 1.8rem;
-  color: #0044cc;
-  margin-bottom: 10px;
-}
-
-.announcement-content ul {
-  margin: 15px 0;
-  list-style-type: disc;
-  padding-left: 20px;
-  text-align: left;
-}
-
-.announcement-content li {
-  margin-bottom: 10px;
-}
-
-/* Footer styling */
-.announcement-footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #555;
-}
-
-            </style>
-          </head>
-          <body>
-            <div class="letter">
-              <h1>Admission Letter</h1>
-              <p>Website Design Training</p>
-              <p><strong>Name:</strong> ${candidate.name}</p>
-              <p><strong>Status:</strong> ${candidate.status}</p>
-              <img src="${candidate.photo}" alt="${candidate.name}">
-              <p><strong>Date:</strong> ${currentDateTime}</p>
-            </div>
-            <div class="footer">
-              <h1>OFFER ADMISSION INTO WEB DESIGN TRAINING</h1>
-    <h1>Student Admission Announcement</h1>
-    <h2>Website Design Training</h2>
-    <p>Powered by Abu-Abdurrahman CodeVerge Technology Ltd</p>
-  </header>
-
-  <main class="announcement-content">
-    <p>
-      We are pleased to announce that student admissions are now open for our free 
-      Website Design Training program. This program is designed to equip aspiring 
-      web designers with practical, industry-relevant skills in a supportive and collaborative environment.
-    </p>
-    
-    <h3>Rules and Regulations</h3>
-    <ul>
-      <li>
-        <strong>Attendance &amp; Punctuality:</strong> Students must attend all sessions on time. 
-        Late arrivals and unexcused absences may result in dismissal.
-      </li>
-      <li>
-        <strong>Time Management:</strong> Adhere to scheduled class times and complete project deadlines.
-      </li>
-      <li>
-        <strong>Active Participation:</strong> Engage in discussions, group projects, and hands-on exercises to maximize learning.
-      </li>
-      <li>
-        <strong>Professional Conduct:</strong> Maintain respect, uphold academic integrity, and contribute positively to the learning environment.
-      </li>
-      <li>
-        <strong>Code of Behavior:</strong> Disruptive behavior or dishonesty will result in corrective action or dismissal.
-      </li>
-    </ul>
-    
-    <p>
-      Welcome to a journey of creativity, learning, and professional growth. For more details 
-      and to register, please visit our website.
-    </p>
-  </main>
-<p>Generated by the Abu-Abdurrahman CodeVerge Technologly</p>
-              <p>Notice: Send the Soft copy to Abu-Abdurrahman CodeVerge Technology on his Whatsapp for Documentation</p>
-  <footer class="announcement-footer">
-    <p>&copy; 2024 Abu-Abdurrahman CodeVerge Technology Ltd. All rights reserved.</p>
-  </footer>
-</body>
-</html>
-            </div>
-          </body>
-        </html>
-      `);
-      printWindow.document.close();
-      printWindow.focus();
-      printWindow.print();
-      printWindow.close();
-    }
-    
-    // Render the candidate list on page load
-    renderCandidates();
+    });
   </script>
 </body>
 </html>

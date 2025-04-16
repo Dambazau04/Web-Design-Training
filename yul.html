@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ID Card Generationn - Abu-Abdurrahman CodeVerge Technology Ltd</title>
+  <title>ID Card Generator - Abu-Abdurrahman CodeVerge Technology Ltd</title>
   <link rel="stylesheet" href="style.css">
   <!-- Optional: Google Font for modern typography -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -11,8 +11,7 @@
 <body>
   <!-- Form Container -->
   <div class="form-container">
-    <h1>ID Card Generatratio</h1>
-    <p>Note: Only for registered Student!</p>
+    <h1>ID Card Generator</h1>
     <form id="idForm">
       <label for="studentName">Full Name:</label>
       <input type="text" id="studentName" name="studentName" placeholder="Enter your full name" required>
@@ -26,7 +25,7 @@
       <button type="submit">Generate ID Card</button>
     </form>
   </div>
-  
+
   <!-- ID Card Preview Container -->
   <div id="idCard" class="id-card" style="display: none;">
     <!-- Front Side -->
@@ -35,6 +34,7 @@
         <img src="images/IMG-20250415-WA0010__1_-removebg-preview.png" alt="Company Logo" class="company-logo">
         <h2>Abu-Abdurrahman CodeVerge Technology Ltd</h2>
         <h3>Website Design Training</h3>
+        <p>Student ID CARD</p>
       </header>
       <div class="card-body">
         <div class="photo-wrapper">
@@ -45,7 +45,7 @@
           <img class="student-signature" src="" alt="Student Signature">
         </div>
         <div class="qr-code">
-          <img src="images/IMG-20250415-WA0010 (1).jpg" alt="QR Code">
+          <img src="" alt="QR Code">
         </div>
         <!-- Student name now at the bottom -->
         <p class="student-name"></p>
@@ -57,7 +57,11 @@
       <div class="back-content">
         <p>This ID card confirms that the above individual is enrolled in the Website Design Training program offered by Abu-Abdurrahman CodeVerge Technology Ltd.</p>
         <p><strong>Date & Time Generated:</strong> <span id="generatedDateTime"></span></p>
-        <p>Please submit this card for documentation.</p>
+        <p>this a Student of </p>
+        <p><strong>A2CT LTD | WEB DESIGN TRAINING.</strong></p>
+        <p>Please give him/her all necessary assistance he/she may require, and if found lost please return to the nearest police station or call this number </p>
+        <p><strong>+2348107907647, +2349075977744</strong></p>
+        <p></p>
         <div class="ceo-signature-section">
           <img src="images/CamScanner_04-15-2025_17.38-removebg-preview.png" alt="CEO Signature" class="ceo-signature">
           <p><strong>CEO Signature</strong></p>
@@ -82,6 +86,9 @@
       background-color: #eef4f9;
       color: #333;
       padding: 20px;
+    }
+    strong {
+      color: #0078d4;
     }
     
     /* Form Container */
@@ -348,5 +355,6 @@
         });
         </script>
   <script src="script.js"></script>
+  <button><a href="index.html">Main</a></button>
 </body>
 </html>

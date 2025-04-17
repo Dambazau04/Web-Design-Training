@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – TechAcademy</title>
+  <style>
+    /* …same styling as before… */
+  </style>
+</head>
+<body>
+  <div class="form-card">
+    <h1>Welcome Back</h1>
+    <form id="login-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Your username" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Your password" required>
+      <button type="submit" class="btn">Log In</button>
+    </form>
+    <p class="signup-link">
+      Don't have an account? <a href="signup.html">Sign up</a>
+    </p>
+  </div>
+  <style>
+    :root {
+      --primary-color: #4F46E5;
+      --accent-color: #10B981;
+      --bg-color: #F9FAFB;
+      --text-color: #1F2937;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: var(--bg-color); color: var(--text-color); display: flex; align-items: center; justify-content: center; height: 100vh; }
+    .form-card { background: #fff; padding: 2rem; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+    h1 { text-align: center; margin-bottom: 1.5rem; color: var(--primary-color); }
+    label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+    input { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 0.375rem; }
+    .btn { width: 100%; padding: 0.75rem; background: var(--accent-color); color: #fff; border: none; border-radius: 0.375rem; font-weight: 600; cursor: pointer; }
+    .btn:hover { background: #059669; }
+    .login-link { text-align: center; margin-top: 1rem; }
+    .login-link a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+  </style>
+  <script>
+    document.getElementById('login-form')
+      .addEventListener('submit', function(e) {
+        e.preventDefault();
+        const u = this.username.value.trim();
+        const p = this.password.value;
+
+        let user;
+        // Admin credentials
+        if (u === 'Dambazau04' && p === 'Habeeb@1') {
+          user = {
+            name: 'Admin',
+            email: 'admin@techacademy.com',
+            role: 'admin',
+          };
+        } else {
+          // In a real app you'd validate against your database
+          user = {
+            name: u,
+            email: u + '@example.com',
+            role: 'student',
+            enrolledCourses: [
+              'Full‑Stack Development',
+              'Data Science & AI'
+            ],
+            recentActivity: [
+              'Completed Module 1',
+              'Joined “Intro to JS” Forum'
+            ]
+          };
+        }
+
+        localStorage.setItem('techUser', JSON.stringify(user));
+        window.location.href = 'pro.html';
+      });
+  </script>
+</body>
+</html>

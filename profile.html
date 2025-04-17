@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- …meta + styles same as before… -->
+  <title>Profile – TechAcademy</title>
+</head>
+<body>
+  <aside>
+    <h2>Profile</h2>
+    <ul id="menu-links" class="nav-links">
+      <!-- injected -->
+    </ul>
+  </aside>
+  <main>
+    <div id="profile-header" class="profile-header">
+      <img id="avatar" src="" alt="Avatar" />
+      <div>
+        <h1 id="user-name"></h1>
+        <p id="user-email"></p>
+      </div>
+    </div>
+    <div id="dashboard-content"></div>
+  </main>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('techUser') || '{}');
+    if (!user.role) {
+      // not logged in
+      window.location.href = 'login.html';
+    }
+
+    // build sidebar based on role
+    const menus = {
+      student: [
+        ['Dashboard', 'profile.html'],
+        ['My Courses', 'courses.html'],
+        ['Settings', 'settings.html'],
+        ['Logout', '#']
+      ],
+      admin: [
+        ['Admin Dashboard', 'profile.html'],
+        ['Manage Users', 'manage-users.html'],
+        ['Manage Courses', 'manage-courses.html'],
+        ['Settings', 'settings.html'],
+        ['Logout', '#']
+      ]
+    };
+    const ul = document.getElementById('menu-links');
+    menus[user.role].forEach(([text, href]) => {
+      const li = document.createElement('li');
+      const a  = document.createElement('a');
+      a.textContent = text;
+      a.href = href;
+      if (text === 'Logout') {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          localStorage.removeItem('techUser');
+          window.location.href = 'login.html';
+        });
+      }
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+
+    // fill header
+    document.getElementById('user-name').textContent  = user.name;
+    document.getElementById('user-email').textContent = user.email;
+    document.getElementById('avatar').src           = user.avatar || 'https://via.placeholder.com/80';
+
+    // render main content
+    const content = document.getElementById('dashboard-content');
+    if (user.role === 'student') {
+      content.innerHTML = `
+        <h2>Welcome, ${user.name.split(' ')[0]}!</h2>
+        <p>This is your student dashboard.</p>
+      `;
+    } else {
+      content.innerHTML = `
+        <h2>Welcome, Admin!</h2>
+        <p>Use the links to manage users and courses.</p>
+      `;
+    }
+  </script>
+</body>
+</html>

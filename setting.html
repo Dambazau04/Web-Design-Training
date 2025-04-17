@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- …meta + CSS… -->
+  <title>Settings – TechAcademy</title>
+</head>
+<body>
+  <!-- reuse sidebar -->
+  <main>
+    <h1>Account Settings</h1>
+    <form id="settings-form">
+      <label>Full Name</label>
+      <input type="text" id="name" required>
+      <label>Email</label>
+      <input type="email" id="email" required>
+      <button type="submit" class="btn">Save Changes</button>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('settings-form');
+    const user = JSON.parse(localStorage.getItem('techUser') || '{}');
+    if (!user.role) window.location.href = 'login.html';
+
+    form.name.value  = user.name;
+    form.email.value = user.email;
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      user.name  = form.name.value.trim();
+      user.email = form.email.value.trim();
+      localStorage.setItem('techUser', JSON.stringify(user));
+      alert('Settings saved!');
+      window.location.href = 'pro.html';
+    });
+  </script>
+</body>
+</html>

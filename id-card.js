@@ -3,7 +3,8 @@
     const candidates = [
         "Aliyu Bashir Lawan",
         "Abdulmalik Abdulfatah",
-        "Alice Brown"
+        "Mujahid Auwal Karaye"
+        "Muhammad Almubasshir"
         // …add the rest of your approved names
       ];
   

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- …meta + same CSS… -->
+  <title>My Courses – TechAcademy</title>
+</head>
+<body>
+  <!-- reuse the same <aside> sidebar from profile.html -->
+  <main>
+    <h1>My Courses</h1>
+    <ul id="course-list"></ul>
+  </main>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('techUser') || '{}');
+    if (user.role !== 'student') {
+      window.location.href = 'login.html';
+    }
+    const ul = document.getElementById('course-list');
+    user.enrolledCourses.forEach(course => {
+      const li = document.createElement('li');
+      li.textContent = course;
+      ul.appendChild(li);
+    });
+  </script>
+</body>
+</html>

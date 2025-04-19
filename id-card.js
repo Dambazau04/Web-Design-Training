@@ -4,7 +4,9 @@
         "Aliyu Bashir Lawan",
         "Abdulmalik Abdulfatah",
         "Mujahid Auwal Karaye",
-        "Muhammad Almubasshir"
+        "Muhammad Almubasshir",
+        "Adam Aliyu",
+        "Babagana Adam"
         // …add the rest of your approved names
       ];
   

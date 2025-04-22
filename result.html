@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Web Design Training Result | Abu-Abdurrahman CodeVerge Technology LTD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 360px;
+      margin: 1rem;
+    }
+    header, .content {
+      padding: 1rem 1.5rem;
+    }
+    header {
+      background: #0044cc;
+      color: #fff;
+      text-align: center;
+    }
+    header img {
+      height: 40px;
+      vertical-align: middle;
+    }
+    header h1 {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-size: 1.25rem;
+      vertical-align: middle;
+    }
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    form label {
+      margin-top: 0.75rem;
+      font-weight: bold;
+    }
+    form input {
+      padding: 0.5rem;
+      margin-top: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form button {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      background: #0044cc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    form button:hover { background: #003399; }
+    .profile {
+      text-align: center;
+    }
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #0044cc;
+      margin-bottom: 0.5rem;
+    }
+    .profile h2 {
+      margin: 0.25rem 0;
+      font-size: 1.1rem;
+    }
+    .profile p {
+      margin: 0.1rem 0;
+      color: #555;
+      font-size: 0.9rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 0.5rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    table th {
+      background: #f0f0f0;
+    }
+    .timestamp {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #777;
+      text-align: right;
+    }
+    .comment-section {
+      margin-top: 1rem;
+      padding: 0 1.5rem;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    .comment-section p {
+      margin: 0.3rem 0;
+    }
+    .grade-section {
+      margin-top: 1rem;
+      padding: 0 1.5rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    .grade-section p {
+      margin: 0.3rem 0;
+    }
+    .grade-section .signature {
+      display: block;
+      margin: 0.5rem 0;
+      height: 50px;
+      object-fit: contain;
+    }
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      padding: 0 1.5rem 1rem;
+    }
+    .actions button {
+      flex: 1;
+      padding: 0.5rem;
+      margin: 0 0.25rem;
+      background: #10b981;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .actions button.print { background: #0044cc; }
+    .actions button:hover { opacity: 0.9; }
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      body * { visibility: hidden !important; }
+      #result-card, #result-card * { visibility: visible !important; }
+      #result-card { position: absolute !important; top: 0; left: 0; width: 100% !important; box-shadow: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="login-card">
+    <header>
+      <img src="images/IMG-20250415-WA0010 (1).jpg" alt="Company Logo">
+      <h1>Abu-Abdurrahman CodeVerge Technology LTD</h1>
+    </header>
+    <div class="content">
+      <form id="login-form">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+        <button type="submit">Log In</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card" id="result-card" style="display:none;">
+    <header>
+      <img src="images/IMG-20250415-WA0010 (1).jpg" alt="Company Logo">
+      <h1>Abu-Abdurrahman CodeVerge Technology LTD</h1>
+      <p>Report Sheet</p>
+    </header>
+    <div class="content">
+      <div class="profile">
+        <img id="photo" src="" alt="Student Photo">
+        <h2 id="student-name"></h2>
+        <p id="student-email"></p>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Subject</th><th>Score</th></tr>
+        </thead>
+        <tbody id="results-body"></tbody>
+        <tfoot>
+          <tr><th>Total</th><th id="total-score"></th></tr>
+        </tfoot>
+      </table>
+      <div class="timestamp" id="timestamp"></div>
+      <div class="comment-section">
+        <p><strong>CEO Comment:</strong> <span id="ceo-comment"></span>Good Performance</p>
+      </div>
+      <div class="grade-section">
+        <p><strong>Grade:</strong> <span id="grade"></span></p>
+        <img src="images/CamScanner_04-15-2025_17.38-removebg-preview.png" alt="CEO Signature" class="signature">
+        <p><strong>Aliyu Bashir Lawan</strong><br><em>CEO, Abu-Abdurrahman CodeVerge Technology LTD</em></p>
+      </div>
+      <!-- Print & Download Buttons -->
+      <div class="actions">
+        <button class="print" id="print-btn">Print</button>
+        <button id="download-btn">Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const candidates = [
+      { name: "Aliyu Bashir Lawan",    email: "dambazaualiyu@gmail.com",     photo: "images/Aliyu%20Bashir%20Lawan.png",   comment: "Excellent performance!", results: [ { subject: "Attendance", score: 85 }, { subject: "Assignment", score: 78 }, { subject: "Exam", score: 92 } ] },
+      { name: "Abdulmalik Abdulfatah", email: "abdulmalik@gmail.com.com", photo: "images/abdulmalik.jpg", comment: "Great improvement!",        results: [ { subject: "HTML & CSS", score: 75 }, { subject: "JavaScript", score: 82 }, { subject: "Responsive Design", score: 88 } ] }
+      // …add more candidates here…
+    ];
+
+    const loginCard   = document.getElementById('login-card');
+    const resultCard  = document.getElementById('result-card');
+    const loginForm   = document.getElementById('login-form');
+    const printBtn    = document.getElementById('print-btn');
+    const downloadBtn = document.getElementById('download-btn');
+
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name  = e.target.name.value.trim();
+      const email = e.target.email.value.trim().toLowerCase();
+      const cand  = candidates.find(c => c.name.toLowerCase() === name.toLowerCase() && c.email === email);
+      if (!cand) {
+        alert('Invalid credentials or no permission.');
+        return;
+      }
+      showResult(cand);
+    });
+
+    function showResult(cand) {
+      loginCard.style.display  = 'none';
+      resultCard.style.display = 'block';
+
+      document.getElementById('photo').src           = cand.photo;
+      document.getElementById('student-name').textContent  = cand.name;
+      document.getElementById('student-email').textContent = cand.email;
+
+      const tbody = document.getElementById('results-body');
+      tbody.innerHTML = '';
+      let total = 0;
+      cand.results.forEach(r => {
+        total += r.score;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${r.subject}</td><td>${r.score}</td>`;
+        tbody.appendChild(tr);
+      });
+      document.getElementById('total-score').textContent = total;
+      document.getElementById('timestamp').textContent   = 'Generated on: ' + new Date().toLocaleString();
+
+      // Display CEO comment
+      document.getElementById('ceo-comment').textContent = cand.comment || '';
+
+      // Calculate grade based on average score
+      const avg = total / cand.results.length;
+      let grade;
+      if (avg >= 90) grade = 'A';
+      else if (avg >= 80) grade = 'B';
+      else if (avg >= 70) grade = 'C';
+      else if (avg >= 60) grade = 'D';
+      else grade = 'F';
+      document.getElementById('grade').textContent = grade;
+    }
+
+    printBtn.addEventListener('click', () => window.print());
+    downloadBtn.addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>

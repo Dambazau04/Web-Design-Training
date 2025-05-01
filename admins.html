@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Manage Student | Abu-Abdurrahman CodeVerge Technology LTD</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #eef2f5; margin: 0; padding: 0; }
+    .login, .admin { max-width: 800px; margin: 3rem auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    h1, h2 { text-align: center; }
+    label { display: block; margin: 0.5rem 0 0.2rem; }
+    input, textarea, button, select { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+    button { background: #007bff; color: white; border: none; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+    th { background: #f4f4f4; }
+    .actions button { width: auto; margin-right: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="login" id="loginDiv">
+    <h1>Admin Login</h1>
+    <label>Username:</label>
+    <input type="text" id="adminUser" placeholder="Enter username">
+    <label>Password:</label>
+    <input type="password" id="adminPass" placeholder="Enter password">
+    <button onclick="adminLogin()">Login</button>
+  </div>
+
+  <div class="admin" id="adminDiv" style="display:none;">
+    <h2>Student Management</h2>
+
+    <!-- Add New Student -->
+    <fieldset>
+      <legend>Add New Student</legend>
+      <label>Name:</label><input type="text" id="newName">
+      <label>Email:</label><input type="email" id="newEmail">
+      <label>Date of Birth:</label><input type="date" id="newDob">
+      <label>Photo URL:</label><input type="url" id="newPhoto">
+      <label>Courses (comma-separated):</label><input type="text" id="newCourses">
+      <label>Notification:</label><textarea id="newNotification"></textarea>
+      <button onclick="addStudent()">Add Student</button>
+    </fieldset>
+
+    <!-- Student List -->
+    <table>
+      <thead>
+        <tr><th>Name</th><th>Email</th><th>DOB</th><th>Photo URL</th><th>Courses</th><th>Notification</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="studentsTable"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const ADMIN_USER = 'Dambazau04', ADMIN_PASS = 'Habeeb@1';
+    function adminLogin() {
+      const u = document.getElementById('adminUser').value;
+      const p = document.getElementById('adminPass').value;
+      if (u===ADMIN_USER && p===ADMIN_PASS) {
+        document.getElementById('loginDiv').style.display='none';
+        document.getElementById('adminDiv').style.display='block';
+        renderTable();
+      } else alert('Invalid credentials');
+    }
+
+    function loadStudents() {
+      const s = localStorage.getItem('studentsData');
+      return s? JSON.parse(s): [];
+    }
+    function saveStudents(arr) { localStorage.setItem('studentsData', JSON.stringify(arr)); }
+
+    function addStudent() {
+      const arr = loadStudents();
+      const newS = {
+        name: document.getElementById('newName').value,
+        email: document.getElementById('newEmail').value,
+        dob: document.getElementById('newDob').value,
+        photo: document.getElementById('newPhoto').value,
+        courses: document.getElementById('newCourses').value.split(',').map(x=>x.trim()),
+        notification: document.getElementById('newNotification').value
+      };
+      arr.push(newS);
+      saveStudents(arr);
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('studentsTable'); tbody.innerHTML='';
+      loadStudents().forEach((s,i)=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td contenteditable data-field="name">${s.name}</td>
+          <td contenteditable data-field="email">${s.email}</td>
+          <td contenteditable data-field="dob">${s.dob}</td>
+          <td contenteditable data-field="photo">${s.photo}</td>
+          <td contenteditable data-field="courses">${s.courses.join(', ')}</td>
+          <td contenteditable data-field="notification">${s.notification}</td>
+          <td class="actions">
+            <button onclick="saveEdit(${i}, this)">Save</button>
+            <button onclick="viewProfile(${i})">View Profile</button>
+            <button onclick="deleteStudent(${i})">Delete</button>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function saveEdit(idx, btn) {
+      const row = btn.closest('tr');
+      const fields = ['name','email','dob','photo','courses','notification'];
+      const arr = loadStudents();
+      fields.forEach(f=>{
+        const cell = row.querySelector(`[data-field=\"${f}\"]`);
+        let val = cell.innerText;
+        if (f==='courses') val = val.split(',').map(x=>x.trim());
+        arr[idx][f] = val;
+      });
+      saveStudents(arr);
+      alert('Saved');
+    }
+
+    function deleteStudent(idx) {
+      const arr = loadStudents(); arr.splice(idx,1); saveStudents(arr); renderTable();
+    }
+
+    function viewProfile(idx) {
+      localStorage.setItem('currentStudentIndex', idx);
+      window.open('anotheratudent.html','_blank');
+    }
+  </script>
+</body>
+</html>

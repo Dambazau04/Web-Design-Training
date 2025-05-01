@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Profile | Abdurrahman CodeVerge Technology LTD</title>
+  <title>Student Profile | Abu-Abdurrahman CodeVerge Technology LTD</title>
   <!-- Include jsPDF and QRious libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
@@ -32,7 +32,7 @@
 </head>
 <body>
   <div class="sidebar" id="sidebar">
-    <h2>Navigation</h2>
+    <h2>Student Profile</h2>
     <a href="#" onclick="showSection('profile')">Profile Dashboard</a>
     <a href="#" onclick="showSection('edit')">Edit Profile</a>
     <a href="#" onclick="showSection('status')">Status</a>
@@ -52,12 +52,13 @@
         <input type="email" id="loginEmail" placeholder="Enter your Gmail address" />
       </div>
       <button onclick="handleLogin()">Login</button>
+      <a class="index.html" id="ebook.html" href="#" target="_blank">Main</a>
     </div>
 
     <!-- Header with Notification -->
     <div class="header" id="mainHeader">
       <img id="companyLogo" src="images/IMG-20250415-WA0010__1_-removebg-preview.png" alt="Company Logo" style="height:40px; vertical-align:middle;" />
-      <span style="font-size:1.5rem; margin-left:10px; vertical-align:middle;">Abdurrahman CodeVerge  &amp; Technology LTD</span>
+      <span style="font-size:1.5rem; margin-left:10px; vertical-align:middle;">Abu-Abdurrahman CodeVerge  &amp; Technology LTD</span>
       <div class="notification">📢 Training ongoing. Contact Admin for inquiries.</div>
     </div>
 
@@ -68,7 +69,7 @@
       <p><strong>Name:</strong> <span id="studentName"></span></p>
       <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
       <button onclick="downloadProfile()">Download Profile</button>
-      <a class="ebook-link" id="ebookLink" href="#" target="_blank">View E-Book</a>
+      <a class="ebook-link" id="ebook.html" href="#" target="_blank">View E-Book</a>
     </div>
 
     <!-- Edit Section -->
@@ -174,7 +175,7 @@
         console.warn('Logo not added:', e);
       }
       doc.setFontSize(16);
-      doc.text("Abdurrahman CodeVerge Technology LTD", 105, 20, { align: 'center' });
+      doc.text("Abu-Abdurrahman CodeVerge Technology LTD", 105, 20, { align: 'center' });
       // Title
       doc.setFontSize(14);
       doc.text("Student Profile", 105, 35, { align: 'center' });

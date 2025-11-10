@@ -6,7 +6,8 @@
         "Mujahid Auwal Karaye",
         "Muhammad Almubasshir",
         "Adam Aliyu",
-        "Babagana Adam"
+        "Babagana Adam",
+        "Mubarak Auwal Karaye"
         // …add the rest of your approved names
       ];
   
@@ -60,3 +61,4 @@
   
       // Print
       document.getElementById('printBtn').addEventListener('click', () => window.print());
+
